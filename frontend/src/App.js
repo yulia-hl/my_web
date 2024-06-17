@@ -45,7 +45,7 @@ function App() {
 
   useEffect(() => {
     fetchCats();
-    const intervalId = setInterval(fetchCats, 5000); // Update every 5 seconds
+    const intervalId = setInterval(fetchCats, 5000); 
     return () => clearInterval(intervalId);
   }, []);
 

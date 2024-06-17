@@ -44,7 +44,7 @@
     var username = document.getElementById('username').value;
     var password = document.getElementById('password').value;
     
-    // Basic client-side validation
+    
     if (!username || !password) {
       if (!username) {
         document.getElementById('username').classList.add('is-invalid');
@@ -59,7 +59,7 @@
       return;
     }
 
-    // Simple XSS protection by escaping input
+    
     var escapeHTML = function(str) {
       return str.replace(/&/g, "&amp;")
                 .replace(/</g, "&lt;")

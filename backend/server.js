@@ -8,7 +8,7 @@ app.use(cors());
 const cats = [
   { id: 1, name: 'Fluffy', breed: 'Persian', age: 3, description: 'A fluffy Persian cat.' },
   { id: 2, name: 'Whiskers', breed: 'Siamese', age: 2, description: 'An energetic Siamese cat.' },
-  // Add more cat data if needed
+  
 ];
 
 app.get('/cats', (req, res) => {
