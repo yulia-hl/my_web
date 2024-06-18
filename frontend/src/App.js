@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
 function CatInfo({ cat }) {
   const [details, setDetails] = useState(null);
 
@@ -17,6 +18,7 @@ function CatInfo({ cat }) {
   useEffect(() => {
     setDetails(null);
   }, [cat]);
+
 
   return (
     <div className="card mb-3">
@@ -58,6 +60,8 @@ function App() {
             <CatInfo cat={cat} />
           </div>
         ))}
+        <a href='./login.html'>login</a>
+        <a href='./quiz.html'>quiz</a>
       </div>
     </div>
   );
