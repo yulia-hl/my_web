@@ -1,100 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cat Facts Quiz</title>
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    .quiz-container {
-      max-width: 600px;
-      margin: 20px auto;
-      padding: 20px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      background-color: #f9f9f9;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat Quiz</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .quiz-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .result {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-
-<div class="quiz-container">
-  <h1 class="mb-4">Cat Facts Quiz</h1>
-
-  <form id="quizForm">
-    <!-- Question 1 -->
-    <div class="form-group">
-      <label for="q1">1. What is the average lifespan of a domestic cat?</label>
-      <select class="form-control" id="q1" name="q1">
-        <option value="">Select an answer</option>
-        <option value="10-15 years">10-15 years</option>
-        <option value="15-20 years">15-20 years</option>
-        <option value="5-10 years">5-10 years</option>
-      </select>
+    <div class="quiz-container">
+        <h1 class="text-center">Cat Quiz</h1>
+        <form id="catQuiz">
+            <div class="form-group">
+                <label for="q1">1. What is the average lifespan of a domestic cat?</label>
+                <select id="q1" class="form-control">
+                    <option value="5-10 years">5-10 years</option>
+                    <option value="10-15 years">10-15 years</option>
+                    <option value="15-20 years">15-20 years</option>
+                    <option value="20-25 years">20-25 years</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="q2">2. Which of the following is not a breed of cat?</label>
+                <select id="q2" class="form-control">
+                    <option value="Siamese">Siamese</option>
+                    <option value="Persian">Persian</option>
+                    <option value="Maine Coon">Maine Coon</option>
+                    <option value="Labrador">Labrador</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="q3">3. Cats are known for their ability to land on their feet. What is this called?</label>
+                <select id="q3" class="form-control">
+                    <option value="Righting reflex">Righting reflex</option>
+                    <option value="Balancing reflex">Balancing reflex</option>
+                    <option value="Agility reflex">Agility reflex</option>
+                    <option value="Landing reflex">Landing reflex</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="q4">4. What is a group of cats called?</label>
+                <select id="q4" class="form-control">
+                    <option value="Pack">Pack</option>
+                    <option value="Herd">Herd</option>
+                    <option value="Clowder">Clowder</option>
+                    <option value="Flock">Flock</option>
+                </select>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="scoreQuiz()">Submit</button>
+        </form>
+        <div id="result" class="result text-center"></div>
     </div>
 
-    <!-- Question 2 -->
-    <div class="form-group">
-      <label>2. How many hours a day do cats typically sleep?</label>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="q2" id="q2a" value="12-16 hours">
-        <label class="form-check-label" for="q2a">12-16 hours</label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="q2" id="q2b" value="8-10 hours">
-        <label class="form-check-label" for="q2b">8-10 hours</label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="q2" id="q2c" value="18-20 hours">
-        <label class="form-check-label" for="q2c">18-20 hours</label>
-      </div>
-    </div>
+    <script>
+        function scoreQuiz() {
+            const answers = {
+                q1: "15-20 years",
+                q2: "Labrador",
+                q3: "Righting reflex",
+                q4: "Clowder"
+            };
 
-    <!-- Question 3 -->
-    <div class="form-group">
-      <label>3. Which of the following are true about cat's senses? (Select all that apply)</label>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="q3" id="q3a" value="They have a strong sense of smell">
-        <label class="form-check-label" for="q3a">They have a strong sense of smell</label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="q3" id="q3b" value="They are colorblind">
-        <label class="form-check-label" for="q3b">They are colorblind</label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="q3" id="q3c" value="They can see in near darkness">
-        <label class="form-check-label" for="q3c">They can see in near darkness</label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="q3" id="q3d" value="They have excellent hearing">
-        <label class="form-check-label" for="q3d">They have excellent hearing</label>
-      </div>
-    </div>
+            let score = 0;
 
-    <!-- Question 4 -->
-    <div class="form-group">
-      <label for="q4">4. How many breeds of domestic cats are there?</label>
-      <select class="form-control" id="q4" name="q4">
-        <option value="">Select an answer</option>
-        <option value="50">50</option>
-        <option value="60">60</option>
-        <option value="70">70</option>
-      </select>
-    </div>
+            for (let question in answers) {
+                const selectedAnswer = document.getElementById(question).value;
+                if (selectedAnswer === answers[question]) {
+                    score++;
+                }
+            }
 
-    <button type="submit" class="btn btn-primary">Submit Quiz</button>
-  </form>
-</div>
-
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script>
-  document.getElementById('quizForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    alert('Quiz submitted!'); 
-  });
-</script>
-
+            document.getElementById('result').innerHTML = `You scored ${score} out of ${Object.keys(answers).length}!`;
+        }
+    </script>
 </body>
 </html>
